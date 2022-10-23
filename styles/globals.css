@@ -78,9 +78,51 @@ width: 100%;
   border: none;
   background-color: transparent;
 }
-.cart-icon:hover{
+
+.wish-icon {
+  left: 44%;
+  font-size: 25px;
+  color: rgb(194, 18, 18);
+  cursor: pointer;
+  position: relative;
+  transition: transform .4s ease;
+  border: none;
+  background-color: transparent;
+}
+
+  .cart-icon-wish {
+  border: none;
+  font-size: 18px;
+  font-weight: 700;
+  background-color: transparent;
+  color: #f02d34;
+  cursor: pointer;
+  width: 200px;
+   transform: scale(1, 1);
+  transition: transform 0.5s ease
+}
+
+.cart-icon-wish:hover{
   transform: scale(1.1,1.1);
 }
+
+.border-bottom-wish {
+  border-bottom: 2px solid black;
+  margin: 2px;
+}
+
+.wish {
+  display: flex;
+}
+
+
+.fill-heart {
+  color: rgb(212, 21, 21);
+  margin-right: 7px;
+}
+
+
+
 .cart-item-qty{
   position: absolute;
   right: -8px;
@@ -97,12 +139,12 @@ width: 100%;
 .products-container{
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
+  justify-content: space-around;
   margin-top: 20px;
   width: 100%;
 }
 .product-card{
+  text-align: center;
  cursor: pointer;
   transform: scale(1, 1);
   transition: transform 0.5s ease;
@@ -110,13 +152,35 @@ width: 100%;
 
 }
 .product-card:hover{
-  transform: scale(1.1,1.1)
+  transform: scale(0.8,0.8)
 }
+
+.swiper-button-prev:after{
+color: #f02d34;
+}
+
+.swiper-button-next:after{
+  color: #f02d34;
+  }
+
 .product-image{
   border-radius: 15px;
  background-color: #ebebeb;
   transform: scale(1, 1);
   transition: transform 0.5s ease;
+}
+
+.maylike {
+  text-align: center;
+  margin: 80px;
+  color: #3f3e3e;
+}
+
+.maylike-title {
+  font-size: 40px;
+  font-weight: 800;
+  
+
 }
 
 .product-name{
@@ -287,9 +351,10 @@ text-align: end;
 }
 
 .footer-container{
-  color: #324d67;
+  background-color: #324d674c;
+  color:#f02d33e5;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 100px;
   padding: 30px 10px;
   font-weight: 700;
   display: flex;
@@ -299,6 +364,13 @@ text-align: end;
   justify-content: center;
 
 }
+
+.footer-logo {
+  font-weight: 800;
+  font-size: 18px;
+}
+
+
 .footer-container .icons{
   font-size: 30px;
   display: flex;
@@ -492,7 +564,7 @@ padding: 30px 65px;
 }
 .buttons .add-to-cart{
   padding: 10px 20px;
-  border: 1px solid #f02d34 ;
+  border: 1px solid #201c1d ;
   margin-top: 40px;
   font-size: 18px;
   font-weight: 500;
@@ -545,22 +617,6 @@ padding: 6px;
 
 }
 
-.maylike-products-wrapper{
-  margin-top: 120px;
-}
-.maylike-products-wrapper h2{
-  text-align: center;
-  margin: 50px;
-  color: #324d67;
-
-  font-size: 28px;
-}
-.maylike-products-container{
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
-}
 .max-qty{
   font-weight: 500;
   color: #f02d34;
@@ -618,25 +674,32 @@ margin-top: 160px;
   margin-top: 10px;
 }
 
-@media screen and (max-width:800px) {
+@media screen and (max-width:1000px) {
+
+  .details{
+    margin-right: 30px;
+    border: none;
+    font-weight: 700;
+  }
+
   .hero-banner-container{
     height: 560px;
   }
   .hero-banner-image{
-    width: 77%;
-    height: 62%;
-    top: -2%;
-    right: -6%;
+    width: 40%;
+    height: 40%;
+    top: 39%;
+    right: 1%;
   }
   .footer-banner-container{
     height: 560px;
     margin-top: 80px;
   }
   .footer-banner-image{
-    width: 77%;
-    left: 30%;
+    width: 50%;
+    left: 50%;
     top: 6%;
-    height: 56%
+    height: 46%
   }
   .banner-desc .left h3{
     font-weight: 900;
@@ -669,7 +732,7 @@ margin-top: 160px;
     font-size: 40px;
   }
   .hero-banner-container button{
-    margin-top: 90px;
+    margin-top: 190px;
     z-index: 10000;
   }
   .desc{
@@ -686,8 +749,14 @@ margin-top: 160px;
     width: 415px;
   padding: 4px;
   }
+
+  .wish-icon{
+    left: 25%;
+  }
+
   .cart-heading{
     margin-top: 35px;
+    margin-left: 40px;
   }
   .product-container{
     margin-top: 10px;

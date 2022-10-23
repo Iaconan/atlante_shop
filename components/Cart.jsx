@@ -41,23 +41,23 @@ const Cart = () => {
 
       <div className='product-container'>
           {cartItems.length >= 1 && cartItems.map((item) => (
-            <div className='product' key={item._id}>
+            <div className='product' key={item?._id}>
               <img src={urlFor(item?.image[0])}
                 className='cart-product-image'
               />
               <div className='item-desc'>
               <div className='flex top'>
-              <h5>{item.name}</h5>
-              <h4>${item.price}</h4>
+              <h5>{item?.name}</h5>
+              <h4>${item?.price}</h4>
               </div>
               <div className='flex bottom'>
               <div>
               <p className='quantity-desc'>
-                <span className="minus" onClick={() => toggleCartItemQuantity(item._id, 'dec')}><AiOutlineMinus />
+                <span className="minus" onClick={() => toggleCartItemQuantity(item?._id, 'dec')}><AiOutlineMinus />
                 </span>
-                <span className="num" onClick="">{item.quantity}
+                <span className="num">{item?.quantity}
                 </span>
-                <span className="plus" onClick={() => toggleCartItemQuantity(item._id, 'inc')}><AiOutlinePlus />
+                <span className="plus" onClick={() => toggleCartItemQuantity(item?._id, 'inc')}><AiOutlinePlus />
                 </span>
             </p>
               </div>
@@ -80,7 +80,7 @@ const Cart = () => {
           <h3>${totalPrice}</h3>
         </div>
         <div className='btn-container'>
-          <button type='button' className='btn' onClick="">
+          <button type='button' className='btn' onClick={() => {}}>
             Pay with Stripe
           </button>
         </div>

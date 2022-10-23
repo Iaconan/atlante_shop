@@ -6,22 +6,25 @@ const Context = createContext();
 export const StateContext = ({ children }) => {
     const [showCart, setShowCart] = useState(false);
     const [cartItems, setCartItems] = useState([]);
+    const [listItems, setListItems] = useState([]);
     const [totalQuantities, setTotalQuantities] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
     const [qty, setQty] = useState(1);
+    const [showWish, setShowWish] = useState(false);
+
 
     let foundProduct;
     let index;
 
     const onAdd = (product, quantity) => {
-        const checkProductInCart = cartItems.find((item) => item._id === product._id);
+        const checkProductInCart = cartItems.find((item) => item?._id === product?._id);
 
         setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price * quantity);
         setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity)
 
         if(checkProductInCart) {
             const updatedCartItems = cartItems.map((cartProduct) => {
-                if(cartProduct._id === product._id) return {
+                if(cartProduct?._id === product?._id) return {
                     ...cartProduct,
                     quantity: cartProduct.quantity + quantity
                 }
@@ -37,8 +40,8 @@ export const StateContext = ({ children }) => {
     }
 
     const onRemove = (product) => {
-        foundProduct = cartItems.find((item) => item._id === product._id)
-        const newCartItems = cartItems.filter((item) => item._id !== product._id); 
+        foundProduct = cartItems.find((item) => item?._id === product?._id)
+        const newCartItems = cartItems.filter((item) => item?._id !== product?._id); 
 
         setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price * foundProduct.quantity);
         setTotalQuantities(prevTotalQuantities => prevTotalQuantities - foundProduct.quantity);
@@ -46,10 +49,10 @@ export const StateContext = ({ children }) => {
     }
 
     const toggleCartItemQuantity = (id, value) => {
-        foundProduct = cartItems.find((item) => item._id === id)
-        index = cartItems.findIndex((product) => product._id === id)
+        foundProduct = cartItems.find((item) => item?._id === id)
+        index = cartItems.findIndex((product) => product?._id === id)
 
-        const newCartItems = cartItems.filter((item) => item._id !== id)
+        const newCartItems = cartItems.filter((item) => item?._id !== id)
 
         if (value === 'inc') {
             setCartItems([...newCartItems, { ...foundProduct, quantity: foundProduct.quantity + 1}]);
@@ -75,6 +78,35 @@ export const StateContext = ({ children }) => {
         });
     }
 
+    const list = (product,quantity) => {
+        const checkWishlist = listItems.find((itemList) => itemList?._id === product?._id);
+
+        if(checkWishlist) {
+            const updatedWhishlist = listItems.map((listProduct) => {
+                if(listProduct?._id === product?._id) return {
+                    ...listProduct
+                    
+                }
+            })
+
+            setListItems(updatedWhishlist)
+        } else {
+            
+            setListItems([...listItems, {...product}])
+        }
+        toast.success(`${product.name} added to the Wishlist. `)
+    }
+
+
+    const removeList = (product) => {
+        foundProduct = listItems.find((itemList) => itemList?._id === product?._id)
+        const newListItems = listItems.filter((itemList) => itemList?._id !== product?._id); 
+
+        
+        
+        setListItems(newListItems);
+    }
+
     return (
         <Context.Provider
         value={{
@@ -89,6 +121,12 @@ export const StateContext = ({ children }) => {
             onAdd,
             toggleCartItemQuantity,
             onRemove,
+            showWish,
+            setShowWish,
+            list,
+            listItems,
+            setListItems,
+            removeList
         }}>
             {children}
         </Context.Provider>
