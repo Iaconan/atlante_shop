@@ -78,7 +78,7 @@ export const StateContext = ({ children }) => {
         });
     }
 
-    const list = (product,quantity) => {
+    const list = (product) => {
         const checkWishlist = listItems.find((itemList) => itemList?._id === product?._id);
 
         if(checkWishlist) {
@@ -92,6 +92,7 @@ export const StateContext = ({ children }) => {
             setListItems(updatedWhishlist)
         } else {
             
+
             setListItems([...listItems, {...product}])
         }
         toast.success(`${product.name} added to the Wishlist. `)

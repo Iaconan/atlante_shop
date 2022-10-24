@@ -51,10 +51,8 @@ const Whishlist = () => {
               </div>
               <div className='flex bottom'>
               <div>
-              <button type='button' className='add-to-cart' onClick={() => {
-                
-              }}>
-                Add to Cart
+              <button type='button' className='buy-now' onClick={() => {}}>
+                Buy Now
             </button>
               </div>
               <button
