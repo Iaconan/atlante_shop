@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Link from 'next/link';
 
+
 import { AiOutlineShopping, AiFillHeart } from 'react-icons/ai';
 import {Cart, Wishlist} from './';
 import { useStateContext } from '../context/StateContext';
@@ -8,6 +9,7 @@ import { useStateContext } from '../context/StateContext';
 
 const Navbar = () => {
   const { showCart, setShowCart, totalQuantities, showWish, setShowWish } = useStateContext();
+  
 
   return (
     <div className='navbar-container'>
@@ -34,6 +36,8 @@ const Navbar = () => {
 
       {showWish && <Wishlist />}
       {showCart &&  <Cart /> }
+
+
     </div>
   )
 }

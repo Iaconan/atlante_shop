@@ -449,6 +449,14 @@ padding: 20px 10px;
   font-size: 22px;
 
 }
+
+.product-detail-desc h4 {
+  margin-top: 10px;
+  font-weight: 800;
+  font-size: large;
+}
+
+
 .remove-item{
   font-size: 24px;
   color: #f02d34;
@@ -534,10 +542,6 @@ padding: 30px 65px;
   align-items: center;
 }
 
-
-.product-detail-desc h4{
-  margin-top: 10px;
-}
 .product-detail-desc p{
   margin-top: 10px;
 }
@@ -862,3 +866,9 @@ margin-top: 160px;
 
 
 }
+
+.cart-icon-wish{
+  width: 120px;
+}
+
+
